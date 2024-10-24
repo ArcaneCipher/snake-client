@@ -20,15 +20,24 @@ const handleUserInput = function (key) {
   }
 
   // Add user input handling for movement
-  if (key === "w") {
-    connection.write("Move: up");
-  } else if (key === "a") {
-    connection.write("Move: left");
-  } else if (key === "s") {
-    connection.write("Move: down");
-  } else if (key === "d") {
-    connection.write("Move: right");
+  switch (key) {
+    case 'w':
+      connection.write("Move: up");
+      break;
+    case 'a':
+      connection.write("Move: left");
+      break;
+    case 's':
+      connection.write("Move: down");
+      break;
+    case 'd':
+      connection.write("Move: right");
+      break;
+    case '\u0003':
+      process.exit();
+      break;
   }
+  
 };
 
 module.exports = setupInput;
