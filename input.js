@@ -13,7 +13,6 @@ const setupInput = function (conn) {
 };
 
 // specify what happens when "data" is received from stdin
-
 const handleUserInput = function (key) {
   // \u0003 maps to ctrl+c input
   if (key === "\u0003") {
@@ -33,21 +32,3 @@ const handleUserInput = function (key) {
 };
 
 module.exports = setupInput;
-
-/* if (key === "w") {
-  setTimeout(() => {
-    conn.write("Move: up");
-  }, 50);
-} else if (key === "a") {
-  setTimeout(() => {
-    conn.write("Move: left");
-  }, 50);
-} else if (key === "s") {
-  setTimeout(() => {
-    conn.write("Move: down");
-  }, 50);
-} else if (key === "d") {
-  setTimeout(() => {
-    conn.write("Move: right");
-  }, 50);
-} */
