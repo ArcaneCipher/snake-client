@@ -23,25 +23,19 @@ const connect = function () {
   // register a "name" to print a name
   conn.write("Name: SNK"); // Replace 'SNK' with your desired three-character name
 
-  // Accepted moves:
-  // "Move: up" - move up one square (unless facing down)
-  // "Move: down" - move down one square (unless facing up)
-  // "Move: left" - move left one square (unless facing right)
-  // "Move: right" - move left one square (unless facing left)
-
   // Second "connect" callback: Send the move command to the server
-/*   conn.on("connect", () => {
-    let delay = 0;
-    let steps = 100;
+  // conn.on("connect", () => {
+  //   let delay = 0;
+  //   let steps = 100;
 
-    for (let i = 0; i < steps; i++) {
-      setTimeout(() => {
-        conn.write("Move: up");
-      }, (delay += 50));
-    }
-  }); */
+  //   for (let i = 0; i < steps; i++) {
+  //     setTimeout(() => {
+  //       conn.write("Move: up");
+  //     }, (delay += 50));
+  //   }
+  // });
 
   return conn;
 };
 
-module.exports = connect;
+module.exports = connect
