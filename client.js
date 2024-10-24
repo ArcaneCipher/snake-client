@@ -10,6 +10,18 @@ const connect = function (playerName) {
 
   conn.setEncoding("utf8"); // interpret incoming data as text
 
+  // handle connection errors to provide useful information
+  conn.on("error", (err) => {
+    console.log("Failed to connect to server:", err.message);
+    process.exit();
+  });
+
+  // unexpected server disconnects to client provide feedback to the player.
+  conn.on("end", () => {
+    console.log("Disconnected from the server");
+    process.exit();
+  });
+
   // register a "data" event handler to receive messages from the server
   conn.on("data", (data) => {
     console.log("the server says:", data);
@@ -26,4 +38,4 @@ const connect = function (playerName) {
   return conn;
 };
 
-module.exports = connect
+module.exports = connect;
