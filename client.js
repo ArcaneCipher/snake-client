@@ -21,6 +21,9 @@ const connect = function () {
     console.log("Successfully connected to game server");
   });
 
+  // register a "name" event handler to print a name
+  conn.write("Name: SNK"); // Replace 'SNK' with your desired three-character name
+
   return conn;
 };
 
