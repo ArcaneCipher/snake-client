@@ -1,5 +1,6 @@
-// Stores the active TCP connection object.
-let connection;
+const { MOVEMENTS, CHAT_MESSAGES } = require("./constants");
+
+let connection; // Stores the active TCP connection object.
 
 // setup interface to handle user input from stdin
 const setupInput = function (conn) {
@@ -14,48 +15,19 @@ const setupInput = function (conn) {
 
 // specify what happens when "data" is received from stdin
 const handleUserInput = function (key) {
-  switch (key) {
-    case "\u0003": // \u0003 maps Ctrl + C to exit the process
-      process.exit();
-      break;
+  // \u0003 maps Ctrl + C to exit the process
+  if (key === "\u0003") {
+    process.exit();
+  }
+  
+  // Check for movement keys (w, a, s, d)
+  if (MOVEMENTS[key]) {
+    connection.write(MOVEMENTS[key]);
+  }
 
-    // Add user input handling for movement
-    case "w":
-      connection.write("Move: up");
-      break;
-    case "a":
-      connection.write("Move: left");
-      break;
-    case "s":
-      connection.write("Move: down");
-      break;
-    case "d":
-      connection.write("Move: right");
-      break;
-
-    // Canned chat messages
-    case "1":
-      connection.write("Say: Hello!");
-      break;
-    case "2":
-      connection.write("Say: Watch out!");
-      break;
-    case "3":
-      connection.write("Say: Nice move!");
-      break;
-    case "4":
-      connection.write("Say: Oops!");
-      break;
-    case "5":
-      connection.write("Say: I'm coming for you!");
-      break;
-    case "6":
-      connection.write("Say: GG!");
-      break;
-
-    default:
-      // Handle any other unexpected input (optional)
-      break;
+  // Check for chat message keys (1, 2, 3, etc.)
+  if (CHAT_MESSAGES[key]) {
+    connection.write(CHAT_MESSAGES[key]);
   }
 };
 
