@@ -23,18 +23,6 @@ const connect = function () {
   // register a "name" to print a name
   conn.write("Name: SNK"); // Replace 'SNK' with your desired three-character name
 
-  // Second "connect" callback: Send the move command to the server
-  // conn.on("connect", () => {
-  //   let delay = 0;
-  //   let steps = 100;
-
-  //   for (let i = 0; i < steps; i++) {
-  //     setTimeout(() => {
-  //       conn.write("Move: up");
-  //     }, (delay += 50));
-  //   }
-  // });
-
   return conn;
 };
 
