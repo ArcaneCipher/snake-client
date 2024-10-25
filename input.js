@@ -1,6 +1,8 @@
 const { MOVEMENTS, CHAT_MESSAGES } = require("./constants");
 
 let connection; // Stores the active TCP connection object.
+let currentDirection = null;
+let movementInterval = null;
 
 // setup interface to handle user input from stdin
 const setupInput = function (conn) {
@@ -9,15 +11,15 @@ const setupInput = function (conn) {
   stdin.setRawMode(true); // Raw Mode allows listening for keypresses
   stdin.setEncoding("utf8"); // interpret incoming data as text
   stdin.resume(); // resume stdin so program listens for input
-  stdin.on("data", handleUserInput); // could be explicit: js stdin.on("data", (key) => handleUserInput(key));
+  stdin.on("data", handleUserInput);
+
   return stdin; // return stdin object to use it elsewhere
 };
 
 // specify what happens when "data" is received from stdin
 const handleUserInput = function (key) {
-  // \u0003 maps Ctrl + C to exit the process
   if (key === "\u0003") {
-    process.exit();
+    process.exit(); // Ctrl + C to exit the process
   }
 
   // Check for movement keys (w, a, s, d)

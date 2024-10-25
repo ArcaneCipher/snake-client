@@ -23,5 +23,5 @@ module.exports = {
   IP,
   PORT,
   MOVEMENTS,
-  CHAT_MESSAGES,
+  CHAT_MESSAGES
 };
