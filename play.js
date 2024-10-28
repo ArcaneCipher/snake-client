@@ -4,14 +4,18 @@ const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 // Function to prompt the user for their name
 const promptPlayer = () => {
   rl.question("Enter your player name (max 3 characters): ", (playerName) => {
     // Validate player name immediately
-    if (!playerName || playerName.length > 3 || !/^[a-zA-Z0-9]+$/.test(playerName)) {
+    if (
+      !playerName ||
+      playerName.length > 3 ||
+      !/^[a-zA-Z0-9]+$/.test(playerName)
+    ) {
       console.log("Error: Player name must be 1 to 3 alphanumeric characters.");
       rl.close();
       process.exit();

@@ -20,6 +20,18 @@ The server version is a Fork of the LHL version of the game. The fork contains m
 
 !["Game in progress!"](./images/game-in-progress.png)
 
+## Future Feature Goals:
+Based on the repo split between snake-client and snake-multiplayer I was limited in the ability to add features at this time. Future feature goals would include:
+
+- Implement Player score keeping within game console
+- Implement Display current highest score player
+- Implement continuous snake movement
+- Implement difficulty selection for the server on server initialization
+- Implement variable number of fruit on screen at once
+- Implement point value for different fruit types
+
+Most of these features would require editing snake-muliutplayer files, which was out of scope for this project.
+
 ## Getting Started
 
 - To play the game, one needs to implement a game client. 
